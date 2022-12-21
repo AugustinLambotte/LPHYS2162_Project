@@ -2,7 +2,7 @@ import numpy as np
 import random as rand
 import math
 import matplotlib.pyplot as plt
-
+test = 1 
 ########################## - Graph 1a - ###########################
 """
    		In this simulation we want to study the net top-of-atm energy flux N, caused by a forcing F. F will have tree dependance;
