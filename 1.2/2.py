@@ -41,7 +41,7 @@ alpha_2ab = 0.03
 CO2_2a = 2
 CO2_2b = 4
 
-########## - Temporal discretisation  - ###########
+########## - Temporal discretization  - ###########
 
 delta_t_in_year = 0.5
 integration_time_in_year = 200 
@@ -115,42 +115,42 @@ for t in temporal_discretization:
     We creat 4 subplots, first for value param from fig 1a, second from fig 1d, third 2a and last 2b.
 """
 plt.subplot(2,2,1)
-plt.plot(temporal_discretization,T_1a_1, label = 'lambda = {}, alpha = {}, CO2_mult = {}'.format(lamb_1a,alpha_1a_1,CO2_1a))
-plt.plot(temporal_discretization,T_1a_2, label = 'lambda = {}, alpha = {}, CO2_mult = {}'.format(lamb_1a,alpha_1a_2,CO2_1a))
-plt.plot(temporal_discretization,T_1a_3, label = 'lambda = {}, alpha = {}, CO2_mult = {}'.format(lamb_1a,alpha_1a_3,CO2_1a))
-plt.xlabel('temps (s)')
+plt.plot(temporal_discretization/31536000,T_1a_1, label = 'lambda = {}, alpha = {}, CO2_mult = {}'.format(lamb_1a,alpha_1a_1,CO2_1a))
+plt.plot(temporal_discretization/31536000,T_1a_2, label = 'lambda = {}, alpha = {}, CO2_mult = {}'.format(lamb_1a,alpha_1a_2,CO2_1a))
+plt.plot(temporal_discretization/31536000,T_1a_3, label = 'lambda = {}, alpha = {}, CO2_mult = {}'.format(lamb_1a,alpha_1a_3,CO2_1a))
+plt.xlabel('time in years)')
 plt.ylabel('delta_T (°K)')
 plt.legend()
 plt.grid()
 plt.title('thermal inertia, parameter value from fig 1a.')
 
 plt.subplot(2,2,2)
-plt.plot(temporal_discretization,T_1d_1, label = 'lambda = {}, alpha = {}, CO2_mult = {}'.format(lamb_1d,alpha_1d_1,CO2_1d_1))
-plt.plot(temporal_discretization,T_1d_2, label = 'lambda = {}, alpha = {}, CO2_mult = {}'.format(lamb_1d,alpha_1d_2,CO2_1d_2))
-plt.plot(temporal_discretization,T_1d_3, label = 'lambda = {}, alpha = {}, CO2_mult = {}'.format(lamb_1d,alpha_1d_3,CO2_1d_3))
-plt.plot(temporal_discretization,T_1d_4, label = 'lambda = {}, alpha = {}, CO2_mult = {}'.format(lamb_1d,alpha_1d_4,CO2_1d_4))
+plt.plot(temporal_discretization/31536000,T_1d_1, label = 'lambda = {}, alpha = {}, CO2_mult = {}'.format(lamb_1d,alpha_1d_1,CO2_1d_1))
+plt.plot(temporal_discretization/31536000,T_1d_2, label = 'lambda = {}, alpha = {}, CO2_mult = {}'.format(lamb_1d,alpha_1d_2,CO2_1d_2))
+plt.plot(temporal_discretization/31536000,T_1d_3, label = 'lambda = {}, alpha = {}, CO2_mult = {}'.format(lamb_1d,alpha_1d_3,CO2_1d_3))
+plt.plot(temporal_discretization/31536000,T_1d_4, label = 'lambda = {}, alpha = {}, CO2_mult = {}'.format(lamb_1d,alpha_1d_4,CO2_1d_4))
 plt.legend()
-plt.xlabel('temps (s)')
+plt.xlabel('time in years')
 plt.ylabel('delta_T (°K)')
 plt.grid()
 plt.title('thermal inertia, parameter value from fig 1d.')
 
 plt.subplot(2,2,3)
-plt.plot(temporal_discretization,T_2a_1, label = 'lambda = {}, alpha = {}, CO2_mult = {}'.format(lamb_2ab_1,alpha_2ab,CO2_2a))
-plt.plot(temporal_discretization,T_2a_2, label = 'lambda = {}, alpha = {}, CO2_mult = {}'.format(lamb_2ab_2,alpha_2ab,CO2_2a))
-plt.plot(temporal_discretization,T_2a_3, label = 'lambda = {}, alpha = {}, CO2_mult = {}'.format(lamb_2ab_3,alpha_2ab,CO2_2a))
+plt.plot(temporal_discretization/31536000,T_2a_1, label = 'lambda = {}, alpha = {}, CO2_mult = {}'.format(lamb_2ab_1,alpha_2ab,CO2_2a))
+plt.plot(temporal_discretization/31536000,T_2a_2, label = 'lambda = {}, alpha = {}, CO2_mult = {}'.format(lamb_2ab_2,alpha_2ab,CO2_2a))
+plt.plot(temporal_discretization/31536000,T_2a_3, label = 'lambda = {}, alpha = {}, CO2_mult = {}'.format(lamb_2ab_3,alpha_2ab,CO2_2a))
 plt.legend()
-plt.xlabel('temps (s)')
+plt.xlabel('time in year')
 plt.ylabel('delta_T (°K)')
 plt.grid()
 plt.title('thermal inertia, parameter value from fig 2a.')
 
 plt.subplot(2,2,4)
-plt.plot(temporal_discretization,T_2b_1, label = 'lambda = {}, alpha = {}, CO2_mult = {}'.format(lamb_2ab_1,alpha_2ab,CO2_2b))
-plt.plot(temporal_discretization,T_2b_2, label = 'lambda = {}, alpha = {}, CO2_mult = {}'.format(lamb_2ab_2,alpha_2ab,CO2_2b))
-plt.plot(temporal_discretization,T_2b_3, label = 'lambda = {}, alpha = {}, CO2_mult = {}'.format(lamb_2ab_3,alpha_2ab,CO2_2b))
+plt.plot(temporal_discretization/31536000,T_2b_1, label = 'lambda = {}, alpha = {}, CO2_mult = {}'.format(lamb_2ab_1,alpha_2ab,CO2_2b))
+plt.plot(temporal_discretization/31536000,T_2b_2, label = 'lambda = {}, alpha = {}, CO2_mult = {}'.format(lamb_2ab_2,alpha_2ab,CO2_2b))
+plt.plot(temporal_discretization/31536000,T_2b_3, label = 'lambda = {}, alpha = {}, CO2_mult = {}'.format(lamb_2ab_3,alpha_2ab,CO2_2b))
 plt.legend()
-plt.xlabel('temps (s)')
+plt.xlabel('time in year')
 plt.ylabel('delta_T (°K)')
 plt.grid()
 plt.title('thermal inertia, parameter value from fig 2b.')
