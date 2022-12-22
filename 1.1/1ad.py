@@ -2,14 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 ########################## - Graph 1a and 1d- ###########################
-"""
-   		In this simulation we want to study the net top-of-atm energy flux N, caused by a forcing F. F will have tree dependance;
-    the preindustrial linear feedback on temperature difference lambda, the quadratic feedback on temperature modification alpha, and
-    a forcing caused by a multiplication of a CO_2 concentration. 
 
-   		All simulation have the same pre-industrial feedback lambda (linear) but we test and the same multiplication of CO_2
-   	concentration but we test 3 differents quadratic alpha feedback relative to a doubling of CO_2.
-"""
+
 ################## - Simulation parameters - ####################
 
 T_ref = 287
