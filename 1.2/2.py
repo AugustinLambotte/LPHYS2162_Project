@@ -31,10 +31,15 @@ CO2_1d_3 = 4
 alpha_1d_4 = 0.058
 CO2_1d_4 = 4
 
-#Graph 2a and 2b.
+#Graph 2a and 2b. Originally alpha was varying from -0.1 to 0.1 but now we have to choose prescribed value fro alpha (? not sure)
 lamb_2ab_1 = -0.79
 lamb_2ab_2 = -1.17
 lamb_2ab_3 = -1.78
+
+alpha_2ab = 0.3
+
+CO2_2a = 2
+CO2_2b = 4
 
 ########## - Temporal discretisation  - ###########
 delta_t_in_year = 0.5
@@ -60,6 +65,14 @@ T_1d_1 = []
 T_1d_2 = []
 T_1d_3 = []
 T_1d_4 = []
+
+T_2a_1 = []
+T_2a_2 = []
+T_2a_3 = []
+
+T_2b_1 = []
+T_2b_2 = []
+T_2b_3 = []
 for t in temporal_discretization:
     if t == 0:
         T_1a_1.append(0)
@@ -70,6 +83,14 @@ for t in temporal_discretization:
         T_1d_2.append(0)
         T_1d_3.append(0)
         T_1d_4.append(0)
+
+        T_2a_1.append(0)
+        T_2a_2.append(0)
+        T_2a_3.append(0)
+
+        T_2b_1.append(0)
+        T_2b_2.append(0)
+        T_2b_3.append(0)
     else:
         T_1a_1.append(delta_T_next_time_step(CO2_1a, lamb_1a, alpha_1a_1, T_1a_1[-1]))
         T_1a_2.append(delta_T_next_time_step(CO2_1a, lamb_1a, alpha_1a_2, T_1a_2[-1]))
@@ -80,17 +101,29 @@ for t in temporal_discretization:
         T_1d_3.append(delta_T_next_time_step(CO2_1d_3, lamb_1d, alpha_1d_3, T_1d_3[-1]))
         T_1d_4.append(delta_T_next_time_step(CO2_1d_4, lamb_1d, alpha_1d_4, T_1d_4[-1]))
 
-# We creat 3 subplots, first for value param from fig 1a, second from fig 1d and last for fig 2.
-plt.subplot(1,3,1)
+        T_2a_1.append(delta_T_next_time_step(CO2_2a, lamb_2ab_1, alpha_2ab, T_2a_1[-1]))
+        T_2a_2.append(delta_T_next_time_step(CO2_2a, lamb_2ab_2, alpha_2ab, T_2a_3[-1]))
+        T_2a_3.append(delta_T_next_time_step(CO2_2a, lamb_2ab_3, alpha_2ab, T_2a_2[-1]))
+
+        T_2b_1.append(delta_T_next_time_step(CO2_2b, lamb_2ab_1, alpha_2ab, T_2b_1[-1]))
+        T_2b_2.append(delta_T_next_time_step(CO2_2b, lamb_2ab_2, alpha_2ab, T_2b_2[-1]))
+        T_2b_3.append(delta_T_next_time_step(CO2_2b, lamb_2ab_3, alpha_2ab, T_2b_3[-1]))
+
+################## - Ploting the results - ##################
+"""
+    We creat 4 subplots, first for value param from fig 1a, second from fig 1d, third 2a and last 2b.
+"""
+plt.subplot(2,2,1)
 plt.plot(temporal_discretization,T_1a_1, label = '1a.1')
 plt.plot(temporal_discretization,T_1a_2, label = '1a.2')
 plt.plot(temporal_discretization,T_1a_3, label = '1a.3')
 plt.xlabel('temps (s)')
 plt.ylabel('delta_T (°K)')
 plt.legend()
+plt.grid()
 plt.title('thermal inertia, parameter value from fig 1a.')
 
-plt.subplot(1,3,2)
+plt.subplot(2,2,2)
 plt.plot(temporal_discretization,T_1d_1, label = '1d.1')
 plt.plot(temporal_discretization,T_1d_2, label = '1d.2')
 plt.plot(temporal_discretization,T_1d_3, label = '1d.3')
@@ -98,9 +131,27 @@ plt.plot(temporal_discretization,T_1d_4, label = '1d.4')
 plt.legend()
 plt.xlabel('temps (s)')
 plt.ylabel('delta_T (°K)')
+plt.grid()
 plt.title('thermal inertia, parameter value from fig 1d.')
 
+plt.subplot(2,2,3)
+plt.plot(temporal_discretization,T_2a_1, label = '2a.1')
+plt.plot(temporal_discretization,T_2a_2, label = '2a.2')
+plt.plot(temporal_discretization,T_2a_3, label = '2a.3')
+plt.legend()
+plt.xlabel('temps (s)')
+plt.ylabel('delta_T (°K)')
+plt.grid()
+plt.title('thermal inertia, parameter value from fig 2a.')
 
-plt.subplot(1,3,3)
+plt.subplot(2,2,4)
+plt.plot(temporal_discretization,T_2b_1, label = '2b.1')
+plt.plot(temporal_discretization,T_2b_2, label = '2b.2')
+plt.plot(temporal_discretization,T_2b_3, label = '2b.3')
+plt.legend()
+plt.xlabel('temps (s)')
+plt.ylabel('delta_T (°K)')
+plt.grid()
+plt.title('thermal inertia, parameter value from fig 2b.')
 
 plt.show()
