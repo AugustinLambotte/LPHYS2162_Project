@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
    		All simulation have the same pre-industrial feedback lambda (linear) but we test and the same multiplication of CO_2
    	concentration but we test 3 differents quadratic alpha feedback relative to a doubling of CO_2.
 """
-test = 1
+
 
 T_ref = 287
 lamb = -0.88
