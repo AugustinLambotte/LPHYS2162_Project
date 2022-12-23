@@ -38,6 +38,10 @@ def temperature_increase(CO_2_multiplication, alpha, lamb):
 	else:
 		return (-lamb - np.sqrt(lamb**2 - 4 * alpha * F))/(2*alpha)
 
+def alpha_critique(lamb, CO_2_multiplication):
+	F = np.log2(CO_2_multiplication)*3.71
+	return round((lamb**2)/(4*F),3)
+
 
 ############################ - Simulation - ########################## 
 #These are for a doubling of CO_2
@@ -56,15 +60,15 @@ for alpha in alpha_distribution:
 
 	T_21.append(temperature_increase(CO2_2, alpha, lambda_1))
 	T_22.append(temperature_increase(CO2_2, alpha, lambda_2))
-	T_23.append(temperature_increase(CO2_2, alpha, lambda_3))
+	T_23.append(temperature_increase(CO2_2, alpha, lambda_3)) 
 
 
 ##################### - Ploting the results - ####################
 
 plt.subplot(1,2,1)
-plt.plot(alpha_distribution, T_11, label = 'lambda = {}'.format(lambda_1))
-plt.plot(alpha_distribution, T_12, label = 'lambda = {}'.format(lambda_2))
-plt.plot(alpha_distribution, T_13, label = 'lambda = {}'.format(lambda_3))
+plt.plot(alpha_distribution, T_11, label = 'lambda = {}, critical alpha = {}'.format(lambda_1, alpha_critique(lambda_1,CO2_1)))
+plt.plot(alpha_distribution, T_12, label = 'lambda = {}, critical alpha = {}'.format(lambda_2, alpha_critique(lambda_2,CO2_1)))
+plt.plot(alpha_distribution, T_13, label = 'lambda = {}, critical alpha = {}'.format(lambda_3, alpha_critique(lambda_3,CO2_1)))
 plt.ylabel('delta_T (°K)')
 plt.xlabel('alpha (W/m^2 / K^2)')
 plt.title('2x CO_2 concentration')
@@ -73,9 +77,9 @@ plt.grid()
 plt.legend()
 
 plt.subplot(1,2,2)
-plt.plot(alpha_distribution, T_21, label = 'lambda = {}'.format(lambda_1))
-plt.plot(alpha_distribution, T_22, label = 'lambda = {}'.format(lambda_2))
-plt.plot(alpha_distribution, T_23, label = 'lambda = {}'.format(lambda_3))
+plt.plot(alpha_distribution, T_21, label = 'lambda = {}, critical alpha = {}'.format(lambda_1, alpha_critique(lambda_1,CO2_2)))
+plt.plot(alpha_distribution, T_22, label = 'lambda = {}, critical alpha = {}'.format(lambda_2, alpha_critique(lambda_2,CO2_2)))
+plt.plot(alpha_distribution, T_23, label = 'lambda = {}, critical alpha = {}'.format(lambda_3, alpha_critique(lambda_3,CO2_2)))
 plt.ylabel('delta_T (°K)')
 plt.xlabel('alpha (W/m^2 /K^2)')
 plt.title('4x CO_2 concentration')
