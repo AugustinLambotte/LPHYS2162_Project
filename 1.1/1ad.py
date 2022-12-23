@@ -45,9 +45,9 @@ def temperature_increase(lamb, alpha, CO_2_multiplication):
 	"""
 	F = np.log2(CO_2_multiplication)*3.71
 	if alpha == 0:
-		return round(-F/lamb,2)
+		return round(-F/lamb,1)
 	else:
-		return round((-lamb - np.sqrt(lamb**2 - 4 * alpha * F))/(2*alpha),2)
+		return round((-lamb - np.sqrt(lamb**2 - 4 * alpha * F))/(2*alpha),1)
 
 ################## - Simulation - ############################
 N_a1 = []
