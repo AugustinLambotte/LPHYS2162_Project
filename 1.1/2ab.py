@@ -39,6 +39,9 @@ def temperature_increase(CO_2_multiplication, alpha, lamb):
 		return (-lamb - np.sqrt(lamb**2 - 4 * alpha * F))/(2*alpha)
 
 def alpha_critique(lamb, CO_2_multiplication):
+	"""
+		Give the value of alpha wher sqrt(lamb**2 - 4 * alpha * F) doesn't exist -> runaway warming.
+	"""
 	F = np.log2(CO_2_multiplication)*3.71
 	return round((lamb**2)/(4*F),3)
 
