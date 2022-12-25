@@ -77,7 +77,7 @@ for T in T_distribution:
 
 zeros_line = np.zeros((len(T_distribution),1))
 
-plt.subplot(1,2,1)
+plt.subplot(2,1,1)
 plt.plot(T_distribution, N_a1, label = "alpha = {}, delta_T = {}K".format(alpha_a1, temperature_increase(lamb_a, alpha_a1, CO2_a)))
 plt.plot(T_distribution, N_a2, label = "alpha = {}, delta_T = ?".format(alpha_a2))
 plt.plot(T_distribution, N_a3, label = "alpha = {}, delta_T = {}K".format(alpha_a3, temperature_increase(lamb_a, alpha_a3, CO2_a)))
@@ -90,7 +90,7 @@ plt.ylim(-2,8)
 plt.xlabel('T(°K)')
 plt.ylabel('N(W/m^2)')
 
-plt.subplot(1,2,2)
+plt.subplot(2,1,2)
 plt.plot(T_distribution, N_d1, label = "linear, CO_2 x {}, delta_T = {}K".format(CO2_d1, temperature_increase(lamb_d, alpha_d1, CO2_d1)))
 plt.plot(T_distribution, N_d2, label = "alpha = {}, CO_2 x {}, delta_T = {}K".format(alpha_d2, CO2_d2, temperature_increase(lamb_d, alpha_d2, CO2_d2)))
 plt.plot(T_distribution, N_d3, label = "linear, CO_2 x {}, delta_T = {}K".format(CO2_d3, temperature_increase(lamb_d, alpha_d3, CO2_d3)))

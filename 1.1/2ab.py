@@ -68,7 +68,7 @@ for alpha in alpha_distribution:
 
 ##################### - Ploting the results - ####################
 
-plt.subplot(1,2,1)
+plt.subplot(2,1,1)
 plt.plot(alpha_distribution, T_11, label = 'lambda = {}, critical alpha = {}'.format(lambda_1, alpha_critique(lambda_1,CO2_1)))
 plt.plot(alpha_distribution, T_12, label = 'lambda = {}, critical alpha = {}'.format(lambda_2, alpha_critique(lambda_2,CO2_1)))
 plt.plot(alpha_distribution, T_13, label = 'lambda = {}, critical alpha = {}'.format(lambda_3, alpha_critique(lambda_3,CO2_1)))
@@ -79,7 +79,7 @@ plt.xlim(-0.1,0.1)
 plt.grid()
 plt.legend()
 
-plt.subplot(1,2,2)
+plt.subplot(2,1,2)
 plt.plot(alpha_distribution, T_21, label = 'lambda = {}, critical alpha = {}'.format(lambda_1, alpha_critique(lambda_1,CO2_2)))
 plt.plot(alpha_distribution, T_22, label = 'lambda = {}, critical alpha = {}'.format(lambda_2, alpha_critique(lambda_2,CO2_2)))
 plt.plot(alpha_distribution, T_23, label = 'lambda = {}, critical alpha = {}'.format(lambda_3, alpha_critique(lambda_3,CO2_2)))
