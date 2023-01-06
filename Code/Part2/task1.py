@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import scipy.integrate as integrate
 from scipy.signal import argrelextrema
 """
-    Plotting of potential function for different forcing values and a 5th power dependance in delta_t
+    This code plots the potential function variation with temperature for 6 differents forcing
 """
 ################### - Simulation parameters - ######################
 T_ref = 287
