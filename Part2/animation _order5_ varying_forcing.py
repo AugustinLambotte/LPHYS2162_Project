@@ -3,6 +3,9 @@ import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation, writers
 import matplotlib.animation as animation
 
+"""
+    This code give an animation of the five order system transient behaviour varying with the forcing
+"""
 
 ############### - Simulation parameters - ###########
 

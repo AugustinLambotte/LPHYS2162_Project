@@ -5,7 +5,8 @@ from matplotlib.animation import FuncAnimation, writers
 import matplotlib.animation as animation
 from scipy.signal import argrelextrema
 """
-    This code Plots potential function for different forcing values and a 5th power dependance in delta_t
+    This code Plots the value of the second derivative of the potential evaluated at the equilibrium point and 
+    give an animation of the potential varying with the forcing.
 """
 ################### - Simulation parameters - ######################
 T_ref = 287

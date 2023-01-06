@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 ######################## - Graph 2a - ########################
 
 """
-	This code plot a comparaison between some linear models and quadratic and how there predicted \Delta T are changing when
+	This code plot a comparison between some linear models and quadratic and how there predicted \Delta T are changing when
     the forcing increase.
 """
 ###################### - Simulation Parameter - ###################
