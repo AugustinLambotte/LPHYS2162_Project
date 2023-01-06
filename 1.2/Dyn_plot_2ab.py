@@ -3,7 +3,10 @@ import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation, writers
 import matplotlib.animation as animation
 
-
+"""
+    This code provides an animation of the transient behaviour of the system under one and two doubling 
+    and with a varying alpha value.
+"""
 ############### - Simulation parameters - ###########
 
 C = 8.36 * 10 ** 8 
@@ -17,8 +20,8 @@ CO2_2b = 4
 
 ########## - Temporal discretization  - ###########
 
-delta_t_in_year = 0.25
-integration_time_in_year = 200 
+delta_t_in_year = 0.1
+integration_time_in_year = 200
 delta_t = delta_t_in_year * 365 * 24 * 60 * 60 # Using SI units
 integration_time = integration_time_in_year * 365 * 24 * 60 * 60 # Using SI units
 
@@ -91,6 +94,8 @@ for alpha in alpha_distribution:
     T_2b_3_tot.append(T_2b_3)
 
 
+
+################## - Animation 1 - #####################
 fig = plt.figure()
 a_1, = plt.plot([],[], label = 'lambda = {}'.format(lamb_2ab_1))
 a_2, = plt.plot([],[], label = 'lambda = {}'.format(lamb_2ab_2))
@@ -118,13 +123,15 @@ def animate(i):
 
 
 ani = animation.FuncAnimation(fig, animate, init_func=init, frames=len(alpha_distribution),blit = False ,interval=20, repeat=True)
-
+plt.show()
+"""
+#uncomment to save
 Writer = writers['ffmpeg']
 writer = Writer(fps=5, metadata={'artist': 'Me'}, bitrate=-1)
 name_file = 'alpha_dyn_co2x2'
-ani.save('alpha_dyn_co2x2.mp4', writer)
+ani.save('alpha_dyn_co2x2.mp4', writer)"""
 
-
+##################### - Animation 2 - ####################
 
 fig = plt.figure()
 b_1, = plt.plot([],[], label = 'lambda = {}'.format(lamb_2ab_1))
@@ -151,11 +158,14 @@ def animate(i):
     plt.title('CO_2 x 4, alpha = {}'.format(round(alpha_distribution[i],2)))
     return b_1, b_2, b_3
 
-
 ani = animation.FuncAnimation(fig, animate, init_func=init, frames=len(alpha_distribution),blit = False ,interval=20, repeat=True)
+
+plt.show()
+"""
+#uncomment to save
 Writer = writers['ffmpeg']
 writer = Writer(fps=5, metadata={'artist': 'Me'}, bitrate=-1)
 name_file = 'alpha_dyn_co2x4'
 ani.save('alpha_dyn_co2x4.mp4', writer)
-
+"""
 
