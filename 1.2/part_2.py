@@ -24,10 +24,12 @@ C = 8.36 * 10 ** 8
 
 #Graph 1a. Same lambda, varying alpha
 lamb_1a = -0.88
+
 alpha_1a_1 = -0.035
 alpha_1a_2 = 0.03
 alpha_1a_3 = 0.058
 alpha_1a_4 = 0
+
 CO2_1a = 2
 
 #Graphs 1d. Same lambda, varying from linear to alpha = 0.058 and from one to two doubling of CO2
@@ -44,29 +46,14 @@ CO2_1d_3 = 4
 alpha_1d_4 = 0.058
 CO2_1d_4 = 4
 
-lamb_2ab_1 = -0.79
-lamb_2ab_2 = -1.17
-lamb_2ab_3 = -1.78
 
-CO2_2a = 2
-CO2_2b = 4
-
-epsilon = 0
-
-alpha_2a_1 = alpha_critique(lamb_2ab_1,CO2_2a) - epsilon
-alpha_2a_2 = alpha_critique(lamb_2ab_2,CO2_2a) - epsilon
-alpha_2a_3 = alpha_critique(lamb_2ab_3,CO2_2a) - epsilon
-
-alpha_2b_1 = alpha_critique(lamb_2ab_1,CO2_2b) - epsilon
-alpha_2b_2 = alpha_critique(lamb_2ab_2,CO2_2b) - epsilon
-alpha_2b_3 = alpha_critique(lamb_2ab_3,CO2_2b) - epsilon
 
 
 
 ########## - Temporal discretization  - ###########
 
-delta_t_in_year = 0.05
-integration_time_in_year = 800 
+delta_t_in_year = 0.2
+integration_time_in_year = 200 
 delta_t = delta_t_in_year * 365 * 24 * 60 * 60 # Using SI units
 integration_time = integration_time_in_year * 365 * 24 * 60 * 60 # Using SI units
 
@@ -85,13 +72,6 @@ T_1d_2 = []
 T_1d_3 = []
 T_1d_4 = []
 
-T_2a_1 = []
-T_2a_2 = []
-T_2a_3 = []
-
-T_2b_1 = []
-T_2b_2 = []
-T_2b_3 = []
 for t in temporal_discretization:
     if t == 0:
         T_1a_1.append(0)
@@ -103,14 +83,6 @@ for t in temporal_discretization:
         T_1d_2.append(0)
         T_1d_3.append(0)
         T_1d_4.append(0)
-
-        T_2a_1.append(0)
-        T_2a_2.append(0)
-        T_2a_3.append(0)
-
-        T_2b_1.append(0)
-        T_2b_2.append(0)
-        T_2b_3.append(0)
     else:
         T_1a_1.append(delta_T_next_time_step(CO2_1a, lamb_1a, alpha_1a_1, T_1a_1[-1]))
         T_1a_2.append(delta_T_next_time_step(CO2_1a, lamb_1a, alpha_1a_2, T_1a_2[-1]))
@@ -122,20 +94,9 @@ for t in temporal_discretization:
         T_1d_3.append(delta_T_next_time_step(CO2_1d_3, lamb_1d, alpha_1d_3, T_1d_3[-1]))
         T_1d_4.append(delta_T_next_time_step(CO2_1d_4, lamb_1d, alpha_1d_4, T_1d_4[-1]))
 
-        T_2a_1.append(delta_T_next_time_step(CO2_2a, lamb_2ab_1, alpha_2a_1, T_2a_1[-1]))
-        T_2a_2.append(delta_T_next_time_step(CO2_2a, lamb_2ab_2, alpha_2a_2, T_2a_2[-1]))
-        T_2a_3.append(delta_T_next_time_step(CO2_2a, lamb_2ab_3, alpha_2a_3, T_2a_3[-1]))
-
-        T_2b_1.append(delta_T_next_time_step(CO2_2b, lamb_2ab_1, alpha_2b_1, T_2b_1[-1]))
-        T_2b_2.append(delta_T_next_time_step(CO2_2b, lamb_2ab_2, alpha_2b_2, T_2b_2[-1]))
-        T_2b_3.append(delta_T_next_time_step(CO2_2b, lamb_2ab_3, alpha_2b_3, T_2b_3[-1]))
-
 ################## - Ploting the results - ##################
 
 
-"""
-    We creat 4 subplots, first for value param from fig 1a, second from fig 1d, third 2a and last 2b.
-"""
 
 plt.subplot(2,1,1)
 plt.plot(temporal_discretization/31536000,T_1a_1, label = 'lambda = {}, alpha = {}, CO2_mult = {}, delta_T steady state= {}°K'.format(lamb_1a,alpha_1a_1,CO2_1a,round(T_1a_1[-1],1)))
@@ -143,11 +104,11 @@ plt.plot(temporal_discretization/31536000,T_1a_2, label = 'lambda = {}, alpha = 
 plt.plot(temporal_discretization/31536000,T_1a_3, label = 'lambda = {}, alpha = {}, CO2_mult = {}, steady state unreached'.format(lamb_1a,alpha_1a_3,CO2_1a))
 plt.plot(temporal_discretization/31536000,T_1a_4, label = 'lambda = {}, linear, CO2_mult = {}, delta_T steady state = {}°K'.format(lamb_1a,CO2_1a,round(T_1a_4[-1],1)))
 
-plt.xlabel('time in years')
-plt.ylabel('delta_T (°K)')
+plt.xlabel('time (y)')
+plt.ylabel('delta_T (K)')
 plt.legend()
 plt.grid()
-plt.title('Thermal inertia, parameter values from fig 1 left.')
+plt.title('Transient behaviour')
    
 plt.subplot(2,1,2)
 plt.plot(temporal_discretization/31536000,T_1d_1, label = 'lambda = {}, linear, CO2_mult = {}, delta_T steady state= {}°K'.format(lamb_1d, CO2_1d_1, round(T_1d_1[-1],1)))
@@ -155,30 +116,8 @@ plt.plot(temporal_discretization/31536000,T_1d_2, label = 'lambda = {}, alpha = 
 plt.plot(temporal_discretization/31536000,T_1d_3, label = 'lambda = {}, linear, CO2_mult = {}, delta_T steady state= {}°K'.format(lamb_1d,CO2_1d_3,round(T_1d_3[-1],1)))
 plt.plot(temporal_discretization/31536000,T_1d_4, label = 'lambda = {}, alpha = {}, CO2_mult = {}, steady state unreached'.format(lamb_1d,alpha_1d_4,CO2_1d_4))
 plt.legend()
-plt.xlabel('time in years')
-plt.ylabel('delta_T (°K)')
+plt.xlabel('time (y)')
+plt.ylabel('delta_T (K)')
 plt.grid()
-plt.title('Thermal inertia, parameter values from fig 1 right.')
-
-plt.show()
-plt.subplot(2,1,1)
-plt.plot(temporal_discretization/31536000,T_2a_1, label = 'lambda = {}, alpha_c = {}'.format(lamb_2ab_1, round(alpha_2a_1,3)))
-plt.plot(temporal_discretization/31536000,T_2a_2, label = 'lambda = {}, alpha_c = {}'.format(lamb_2ab_2, round(alpha_2a_2,3)))
-plt.plot(temporal_discretization/31536000,T_2a_3, label = 'lambda = {}, alpha_c = {}'.format(lamb_2ab_3, round(alpha_2a_3,3)))
-plt.legend()
-plt.xlabel('time in year')
-plt.ylabel('delta_T (°K)')
-plt.grid()
-plt.title('Trensient behaviour under one doubling of CO2 with alpha = alpha_c.')
-
-plt.subplot(2,1,2)
-plt.plot(temporal_discretization/31536000,T_2b_1, label = 'lambda = {}, alpha_c = {}'.format(lamb_2ab_1, round(alpha_2b_1,3)))
-plt.plot(temporal_discretization/31536000,T_2b_2, label = 'lambda = {}, alpha_c = {}'.format(lamb_2ab_2, round(alpha_2b_2,3)))
-plt.plot(temporal_discretization/31536000,T_2b_3, label = 'lambda = {}, alpha_c = {}'.format(lamb_2ab_3, round(alpha_2b_3,3)))
-plt.legend()
-plt.xlabel('time in year')
-plt.ylabel('delta_T (°K)')
-plt.grid()
-plt.title('Trensient behaviour under two doubling of CO2 with alpha = alpha_c.')
 
 plt.show()
