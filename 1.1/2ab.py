@@ -2,12 +2,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-######################## - Graph 2a - ########################
-
 """
-	In this simulation we want to study the increase of temperature, delta_T, regarding the quadratic parametre alpha
-	in tree case diffentiating each other by tree different lambda values.
-	- C is the concentration of CO_2 in ppm
+	This code reproduce graph 2a and 2b of the Bloch_johnson paper.
+
 """
 ###################### - Simulation Parameter - ###################
 T_0 = 287
@@ -40,7 +37,7 @@ def temperature_increase(CO_2_multiplication, alpha, lamb):
 
 def alpha_critique(lamb, CO_2_multiplication):
 	"""
-		Give the value of alpha wher sqrt(lamb**2 - 4 * alpha * F) doesn't exist -> runaway warming.
+		Give the value of alpha where sqrt(lamb**2 - 4 * alpha * F) doesn't exist -> runaway warming.
 	"""
 	F = np.log2(CO_2_multiplication)*3.71
 	return round((lamb**2)/(4*F),3)
