@@ -1,9 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 """
-    Here, the goal is to investigate the role of the thermal inertia C and the transient behaviour of the model.
-    A numerical scheme is implemented to solve (eq 3.). We will perform several times series, all of theme during 200y,
-    for all the value of alpha lambda and F used in the previous exercises.
+    This code compute and plot the transient behaviour of the quadratic model.
 """
 
 ############ - Function definition - ##############
