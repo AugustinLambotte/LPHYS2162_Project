@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-########################## - Graph 1a and 1d- ###########################
+
 """
 	This code reproduce graph 1a and 1d of the Bloch_johnson paper
 """

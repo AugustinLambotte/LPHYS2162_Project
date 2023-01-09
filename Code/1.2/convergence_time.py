@@ -46,22 +46,25 @@ CO2_2b = 4
 
 alpha_min = -0.1
 alpha_max = 0.1
-detla_alpha = 0.0001
+detla_alpha = 0.001
 alpha_distribution = np.arange(alpha_min, alpha_max, detla_alpha)
 
 
 
 ########## - Temporal discretization  - ###########
 
-delta_t_in_year = 0.2
-integration_time_in_year = 500 
+delta_t_in_year = 0.02
+integration_time_in_year = 300 
 delta_t = delta_t_in_year * 365 * 24 * 60 * 60 # Using SI units
 integration_time = integration_time_in_year * 365 * 24 * 60 * 60 # Using SI units
 
 temporal_discretization = np.arange(0, integration_time, delta_t)
 
-################# - Simulation - ################
+#the following variable is use to study the convergence, during the simulaiton we will compare if the current result
+#is close to the one one year before.
+number_of_temporal_step_in_one_year = int(1/delta_t_in_year)
 
+################# - Simulation - ################
 
 
 record_2a_1 = []
@@ -106,23 +109,24 @@ for alpha in alpha_distribution:
             T_2b_1.append(delta_T_next_time_step(CO2_2b, lamb_2ab_1, alpha, T_2b_1[-1]))
             T_2b_2.append(delta_T_next_time_step(CO2_2b, lamb_2ab_2, alpha, T_2b_2[-1]))
             T_2b_3.append(delta_T_next_time_step(CO2_2b, lamb_2ab_3, alpha, T_2b_3[-1]))
-            if abs(T_2a_1[-1] - T_2a_1[-2]) < 0.001 and a_1_steady_state == 0:
+            #Condition: the simulation has run for minimum a year + the steady state is reached + it is the first time it is reached
+            if t>31536000 and abs(T_2a_1[-1] - T_2a_1[-number_of_temporal_step_in_one_year]) < 0.01 and a_1_steady_state == 0:
                 record_2a_1.append(t)
                 a_1_steady_state = 1
-            if abs(T_2a_2[-1] - T_2a_2[-2]) < 0.001 and a_2_steady_state == 0:
+            if t>31536000 and abs(T_2a_2[-1] - T_2a_2[-number_of_temporal_step_in_one_year]) < 0.01 and a_2_steady_state == 0:
                 record_2a_2.append(t)
                 a_2_steady_state = 1
-            if abs(T_2a_3[-1] - T_2a_3[-2]) < 0.001 and a_3_steady_state == 0:
+            if t>31536000 and abs(T_2a_3[-1] - T_2a_3[-number_of_temporal_step_in_one_year]) < 0.01 and a_3_steady_state == 0:
                 record_2a_3.append(t)
                 a_3_steady_state = 1
 
-            if abs(T_2b_1[-1] - T_2b_1[-2]) < 0.001 and b_1_steady_state == 0:
+            if t>31536000 and abs(T_2b_1[-1] - T_2b_1[-number_of_temporal_step_in_one_year]) < 0.01 and b_1_steady_state == 0:
                 record_2b_1.append(t)
                 b_1_steady_state = 1
-            if abs(T_2b_2[-1] - T_2b_2[-2]) < 0.001 and b_2_steady_state == 0:
+            if t>31536000 and abs(T_2b_2[-1] - T_2b_2[-number_of_temporal_step_in_one_year]) < 0.01 and b_2_steady_state == 0:
                 record_2b_2.append(t)
                 b_2_steady_state = 1
-            if abs(T_2b_3[-1] - T_2b_3[-2]) < 0.001 and b_3_steady_state == 0:
+            if t>31536000 and abs(T_2b_3[-1] - T_2b_3[-number_of_temporal_step_in_one_year]) < 0.01 and b_3_steady_state == 0:
                 record_2b_3.append(t)
                 b_3_steady_state = 1
 

@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 
 """
-	This code generate a plot comparing Delta T_{x4} and 2 x Delta T_{x2} for varying value of alpha.
+	This code generates a plot comparing Delta T_{x4} and 2 x Delta T_{x2} for varying value of alpha.
 """
 ###################### - Simulation Parameter - ###################
 T_0 = 287
